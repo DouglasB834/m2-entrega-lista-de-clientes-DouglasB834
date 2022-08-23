@@ -1,6 +1,18 @@
-class Api {
-  
+export class Api {
+    static urlBase = "https://atividade-api-clientes.herokuapp.com/clientes"
+    static headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer`
+    }
     static async listarClientes(){
+        const clientes = await fetch(`${this.urlBase}`,{
+            method: "GET",
+            headers: this.headers
+
+        })
+        .then(res =>res.json())
+        .catch(error => console.log(error))
+        return clientes
 
     }
 
@@ -18,4 +30,4 @@ class Api {
 
 }
   
-export {Api}
+// export {Api}
