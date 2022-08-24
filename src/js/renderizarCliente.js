@@ -37,6 +37,7 @@ export class CriarCardClient{
         
         //add atributos APi
         tagLi.id                = array.id
+        tagH2.id                = array.id
         tagH2.innerText         = array.nome;
         tagH3Dados.innerText    = `Dados Pessoais`
         tagPEmail.innerText     = `email: ${array.email}`;
