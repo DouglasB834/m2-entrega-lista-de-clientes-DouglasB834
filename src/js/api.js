@@ -56,7 +56,7 @@ export class Api {
         })
         .then(res => res.json())
         .catch(err = alert(err))
-
+        //teste
         return deletar
     }
 
