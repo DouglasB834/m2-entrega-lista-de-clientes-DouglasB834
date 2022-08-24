@@ -34,6 +34,7 @@ export class CriarCardClient{
 
         //add class Css
         tagLi.classList.add("card")
+        
         //add atributos APi
         tagLi.id                = array.id
         tagH2.innerText         = array.nome;
@@ -62,24 +63,3 @@ export class CriarCardClient{
 
     }
 }
-   /*   <div>
-                <h3>Dados Pessoais</h3>
-                <p>email: jardel@gmail.com</p>
-                <p>idade: 21</p>
-                <p>cpf: 123.456.789-10</p>
-                <p>sexo: Masculino</p>
-
-            </div>
-
-            <div>
-                <h3>Endereco</h3>
-                <p>cep: 38055292</p>
-                <p>estado: MG</p>
-                <p>cidade: Uberaba</p>
-                <p>bairro: Residencial Veneza</p>
-                <p>rua: rua da dev</p>
-                <p>numero: 123</p>
-            </div>
-        </li>
-    -->
-    */ 
