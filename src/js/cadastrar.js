@@ -1,4 +1,3 @@
-// import { Api } from "./api.js"
 
 import { Api } from "./api.js";
 
@@ -42,6 +41,7 @@ class AddPessoa {
         const bairro = document.querySelector(".bairro")
         const cidade = document.querySelector(".cidade")
         const estado = document.querySelector(".estado")
+        //btn FN
         const cadastrarBtn = document.querySelector(".cadastrarBtn")
         console.log(cadastrarBtn)
         cadastrarBtn.addEventListener("click", (event) => {

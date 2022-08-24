@@ -3,7 +3,7 @@ import { Api } from "./api.js"
 
 
 class Options {
-    static  input = document.querySelectorAll("input")
+
     static async getName(){
 
         const clientesDaApi      = await Api.getAllCliente()

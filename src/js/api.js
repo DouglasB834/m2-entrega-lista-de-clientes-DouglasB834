@@ -8,6 +8,7 @@ export class Api {
         Authorization: `Bearer`
     }
  
+    //pegar clientes
     static async getAllCliente(){
         const clientes = await fetch(`${this.urlBase}`,{
             method: "GET",
@@ -20,11 +21,13 @@ export class Api {
 
     }
  // polimorfismo e um metodo com mtas formas (metodos com mesmo nome e atriutos diferentes)
-    static async registerNewClient(dados){
+
+    //Criar card cliente 
+    static async registerNewClient(body){
         const newClient = await fetch(`${this.urlBase}`,{
             method: "POST",
             headers: this.headers,
-            body: JSON.stringify(dados)
+            body: JSON.stringify(body)
         })
         .then(res =>res.json())
         .catch(error=> console.log(error))
