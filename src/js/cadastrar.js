@@ -1,4 +1,3 @@
-// import { Api } from "./api.js"
 
 import { Api } from "./api.js";
 
@@ -29,7 +28,6 @@ class AddPessoa {
     }
 
     static cardParaPessoa() {
-
         const nome          = document.querySelector(".nome")
         const email         = document.querySelector(".email")
         const idade         = document.querySelector(".idade")
@@ -44,16 +42,16 @@ class AddPessoa {
         const estado        = document.querySelector(".estado")
         const cadastrarBtn  = document.querySelector(".cadastraBtn")
 
-
         cadastrarBtn.addEventListener("click", (event) => {
-            // event.preventDefault()
+            event.preventDefault()
 
             const endereco = new AddPessoa(cep.value, rua.value, numero.value, bairro.value, cidade.value, estado.value)
 
             const cliente = new Pessoa(nome.value, email.value, idade.value, cpf.value, sexo.value, endereco)
             console.log(cliente)
             Api.registerNewClient(cliente)
-            
+
+
         })
 
 
@@ -63,28 +61,3 @@ class AddPessoa {
 
 console.log(AddPessoa.cardParaPessoa())
 
-
-
-
-
-
-/*
-    {
-        "nome": "tiago",
-        "idade": 42,
-        "cpf": "00000000000",
-        "sexo": "Masculino",
-        "email": "guilherme@gmail.com",
-        "endereco": {
-            "cep": "38055292",
-            "rua": "São Carioca",
-            "numero": "171",
-            "bairro": "Carioca",
-            "cidade": "Rio de janeiro ",
-            "estado": "RJ"
-        }
-	
-}
-
-
-*/ 

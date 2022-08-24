@@ -1,45 +1,60 @@
+
+
+
 export class Api {
     static urlBase = "https://atividade-api-clientes.herokuapp.com/clientes"
     static headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer`
     }
-   
-    static async getAllCliente(){
-        const clientes = await fetch(`${this.urlBase}`,{
+
+    static async getAllCliente() {
+        const clientes = await fetch(`${this.urlBase}`, {
             method: "GET",
             headers: this.headers
 
         })
-        .then(res =>res.json())
-        .catch(error => console.log(error))
+            .then(res => res.json())
+            .catch(error => console.log(error))
         return clientes
 
     }
- // polimorfismo e um metodo com mtas formas (metodos com mesmo nome e atriutos diferentes)
-    static async registerNewClient(dados){
-        const newClient = await fetch(`${this.urlBase}`,{
+    static async registerNewClient(dados) {
+        const newClient = await fetch(`${this.urlBase}`, {
             method: "POST",
             headers: this.headers,
             body: JSON.stringify(dados)
         })
-        .then(res =>res.json())
-        .catch(error=> console.log(error))
+            .then(res => res.json())
+            .catch(error => console.log(error))
 
         return newClient;
     }
 
-    static async editarCliente(id, data){
-        
-
-
-
+    static async editarCliente(data, id) {
+        console.log(data,id)
+        const atualizarCliente = await fetch(`${this.urlBase}/${id}`,{
+            method:"PATCH",
+            headers:this.headers,
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .catch(error => error)
+        return atualizarCliente
     }
 
-    static async deletarCliente(id){
+    // polimorfismo e um metodo com mtas formas (metodos com mesmo nome e atriutos diferentes)
 
+    static async deletarCliente(id) {
+
+        const deletar = await fetch(`${this.urlBase}/${id}`, {
+            method: "DELETE",
+            // headers: this.headers
+        })
+            .then(res => res.json())
+            .catch(err = alert(err))
+        //teste
+        return deletar
     }
 
 }
-  
-// export {Api}
