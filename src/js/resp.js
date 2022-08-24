@@ -7,6 +7,6 @@ import { CriarCardClient } from "./renderizarCliente.js";
 const dados = await Api.listarClientes()
 CriarCardClient.card(dados)
 // listaBtn.addEventListener("click", async()=>{
-    
+
 
 // })
