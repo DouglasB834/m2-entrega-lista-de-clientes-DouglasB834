@@ -36,7 +36,7 @@ class Options {
 
     static buscar (client){
         
-        const nome = document.querySelector(".nome")     
+        const nome      = document.querySelector(".nome")     
         const email     = document.querySelector(".email")
         const idade     = document.querySelector(".idade")
         const cpf       = document.querySelector(".cpf")
@@ -63,18 +63,29 @@ class Options {
        bairro.setAttribute("value", endereco.bairro)
        cidade.setAttribute("value", endereco.cidade)
        estado.setAttribute("value", endereco.estado)
-       
+      
        pesquisarBtn.addEventListener("click", (event)=>{
         event.preventDefault()
+        const {endereco}    = client
         const id = client.id
-         
+        console.log(numero.value)
         let objeto ={
             nome:   nome.value,
             email:  email.value,
             idade:  idade.value,
             cpf:    cpf.value,
             sexo:   sexo.value,
+            endereco:{
+            cep:    cep.value,
+            rua:    rua.value,
+            numero: numero.value,
+            bairro: bairro.value,
+            cidade: cidade.value,
+            estado: estado.value
+            }
+
         }
+        
         
         Api.editarCliente(objeto,id)
 
