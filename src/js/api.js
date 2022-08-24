@@ -28,24 +28,33 @@ export class Api {
         })
         .then(res =>res.json())
         .catch(error=> console.log(error))
-
         return newClient;
     }
+    
+//CriarCardClient
+    static async editarCliente(data, id){
+       console.log(data)
 
-    static async editarCliente(id, data){
         const atualizarClient = await fetch (`${this.urlBase}/${id}`,{
             method: "PATCH",
             headers: this.headers,
+            body:JSON.stringify(data)
         })
         .then(res=>res.json())
         .catch(error=> error)
-
+        return atualizarClient
     }
 
     static async deletarCliente(id){
 
+        const deletar = await fetch (`${this.urlBase}/${id}`,{
+            method: "DELETE",
+            headers: this.headers
+        })
+        .then(res => res.json())
+        .catch(err = alert(err))
+
+        return deletar
     }
 
 }
-  
-// export {Api}
