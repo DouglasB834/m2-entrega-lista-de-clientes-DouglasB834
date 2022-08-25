@@ -48,7 +48,6 @@ class AddPessoa {
             const endereco = new AddPessoa(cep.value, rua.value, numero.value, bairro.value, cidade.value, estado.value)
 
             const cliente = new Pessoa(nome.value, email.value, idade.value, cpf.value, sexo.value, endereco)
-            console.log(cliente)
             Api.registerNewClient(cliente)
 
 

@@ -26,20 +26,22 @@ export class Api {
             body: JSON.stringify(dados)
         })
             .then(res => res.json())
+            .then(res=> window.location.assign(`../../index.html`))
             .catch(error => console.log(error))
 
         return newClient;
     }
 
     static async editarCliente(data, id) {
-        console.log(data,id)
+       
         const atualizarCliente = await fetch(`${this.urlBase}/${id}`,{
             method:"PATCH",
             headers:this.headers,
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .catch(error => error)
+        .then(res=> window.location.assign(`../../index.html`))
+        .catch(error => alert(error))
         return atualizarCliente
     }
 
@@ -49,11 +51,11 @@ export class Api {
 
         const deletar = await fetch(`${this.urlBase}/${id}`, {
             method: "DELETE",
-            // headers: this.headers
+            headers: this.headers
         })
-            .then(res => res.json())
-            .catch(err = alert(err))
-        //teste
+        .then(res=> window.location.assign(`../../index.html`))
+        .catch(err => alert(err))
+        
         return deletar
     }
 
