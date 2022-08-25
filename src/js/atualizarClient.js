@@ -1,40 +1,38 @@
 import { Api } from "./api.js"
-// import { CriarCardClient } from "./renderizarCliente.js"
-
 
 class Options {
-
     static async getName(){
 
         const clientesDaApi      = await Api.getAllCliente()
         const select    = document.querySelector(".select")
 
         clientesDaApi.forEach(element => {
-           let option = document.createElement("option")
-         
+           let option   = document.createElement("option")
+    
             option.innerText = element.nome
+            option.value = element.id
             select.append(option)
         });     
-        Options.atualizarCliente(select, clientesDaApi)
+        await Options.atualizarCliente(select, clientesDaApi)
 
     }
 
-    static async atualizarCliente(tagSelect, dados){      
+    static async atualizarCliente(select, dados){      
         const formClient =    document.querySelector(".formClient");       
-        formClient.addEventListener("click", (event) =>{
+        formClient.addEventListener("click", async (event) =>{
 
             event.preventDefault()
             console.log(  )
             if(event.target.tagName == "BUTTON"){
-                let nome = tagSelect.value
-                const filtraCliente = dados.find(element=> element.nome == nome)
-             
-                Options.buscar(filtraCliente)
+                let id = select.value
+                const filtraCliente = dados.find(element=> element.id == id)
+               
+               await Options.buscar(filtraCliente)
             }            
         })
     }
 
-    static buscar (client){
+    static async buscar (client){
         
         const nome      = document.querySelector(".nome")     
         const email     = document.querySelector(".email")
@@ -48,54 +46,71 @@ class Options {
         const bairro        = document.querySelector(".bairro")
         const cidade        = document.querySelector(".cidade")
         const estado        = document.querySelector(".estado")
-        const {endereco}    = client
-        const pesquisarBtn  = document.querySelector(".pesquisarBtn")
+        // const {endereco}    = client
 
-       nome.setAttribute("value", client.nome)
-       email.setAttribute("value", client.email)
-       idade.setAttribute("value", client.idade)
-       cpf.setAttribute("value", client.cpf)
-       sexo.setAttribute("value", client.sexo)
+
+       nome.value   = client.nome
+       email.value  = client.email
+       idade.value  = client.idade
+       cpf.value    = client.cpf
+       sexo.value   = client.sexo
       
-       cep.setAttribute("value", endereco.cep)
-       rua.setAttribute("value", endereco.rua)
-       numero.setAttribute("value", endereco.numero)
-       bairro.setAttribute("value", endereco.bairro)
-       cidade.setAttribute("value", endereco.cidade)
-       estado.setAttribute("value", endereco.estado)
+       cep.value    = client.endereco.cep
+       rua.value    = client.endereco.rua
+       numero.value = client.endereco.numero
+       bairro.value = client.endereco.bairro
+       cidade.value = client.endereco.cidade
+       estado.value = client.endereco.estado
       
-       pesquisarBtn.addEventListener("click", (event)=>{
-        event.preventDefault()
-        const {endereco}    = client
-        const id = client.id
-        console.log(numero.value)
-        let objeto ={
-            nome:   nome.value,
-            email:  email.value,
-            idade:  idade.value,
-            cpf:    cpf.value,
-            sexo:   sexo.value,
-            endereco:{
-            cep:    cep.value,
-            rua:    rua.value,
-            numero: numero.value,
-            bairro: bairro.value,
-            cidade: cidade.value,
-            estado: estado.value
-            }
+  
 
-        }
+       const pesquisarBtn  = document.querySelector(".pesquisarBtn")
         
+        const idCliente= client.id
+       
+        pesquisarBtn.addEventListener("click", async (event)=>{
+            
+         event.preventDefault()
+         // const {endereco}    = client
+         const nome      = document.querySelector(".nome")     
+         const email     = document.querySelector(".email")
+         const idade     = document.querySelector(".idade")
+         const cpf       = document.querySelector(".cpf")
+         const sexo      = document.querySelector(".sexo")
+ 
+         const cep           = document.querySelector(".cep")
+         const rua           = document.querySelector(".rua")
+         const numero        = document.querySelector(".numero")
+         const bairro        = document.querySelector(".bairro")
+         const cidade        = document.querySelector(".cidade")
+         const estado        = document.querySelector(".estado")
+ 
         
-        Api.editarCliente(objeto,id)
-
-
-       })
+         let objeto ={
+             nome:   nome.value,
+             email:  email.value,
+             idade:  idade.value,
+             cpf:    cpf.value,
+             sexo:   sexo.value,
+             endereco:{
+             cep:    cep.value,
+             rua:    rua.value,
+             numero: numero.value,
+             bairro: bairro.value,
+             cidade: cidade.value,
+             estado: estado.value
+             }
+ 
+         }
+         console.log(idCliente )
+         await Api.editarCliente(objeto,idCliente)
+       
+        })
   
     }
+  
 
 }
-
 Options.getName()
 
 

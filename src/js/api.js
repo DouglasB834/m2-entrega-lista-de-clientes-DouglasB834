@@ -32,14 +32,15 @@ export class Api {
     }
 
     static async editarCliente(data, id) {
-        console.log(data,id)
+       
         const atualizarCliente = await fetch(`${this.urlBase}/${id}`,{
             method:"PATCH",
             headers:this.headers,
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .catch(error => error)
+        .then(res=> alert(res +" agora vai"))
+        .catch(error => alert(error))
         return atualizarCliente
     }
 
@@ -49,11 +50,10 @@ export class Api {
 
         const deletar = await fetch(`${this.urlBase}/${id}`, {
             method: "DELETE",
-            // headers: this.headers
+            headers: this.headers
         })
-            .then(res => res.json())
-            .catch(err = alert(err))
-        //teste
+        .catch(err => alert(err))
+        
         return deletar
     }
 
