@@ -26,6 +26,7 @@ export class Api {
             body: JSON.stringify(dados)
         })
             .then(res => res.json())
+            .then(res=> window.location.assign(`../../index.html`))
             .catch(error => console.log(error))
 
         return newClient;
@@ -39,7 +40,7 @@ export class Api {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
-        .then(res=> alert(res +" agora vai"))
+        .then(res=> window.location.assign(`../../index.html`))
         .catch(error => alert(error))
         return atualizarCliente
     }
@@ -52,6 +53,7 @@ export class Api {
             method: "DELETE",
             headers: this.headers
         })
+        .then(res=> window.location.assign(`../../index.html`))
         .catch(err => alert(err))
         
         return deletar

@@ -1,6 +1,5 @@
 import { Api } from "./api.js";
 
-
 class deletarCliente{
 
     static async getName(){
@@ -15,11 +14,11 @@ class deletarCliente{
             option.value = element.id
             select.append(option)
         });     
-        this.atualizarCliente(select, clientesDaApi)
+        this.delete(select, clientesDaApi)
 
     }
 
-    static async atualizarCliente(tagSelect, dados){      
+    static async delete(tagSelect, dados){      
         const formClient =    document.querySelector(".formClient");       
         formClient.addEventListener("click", (event) =>{
 
